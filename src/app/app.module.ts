@@ -2,7 +2,6 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-//import { MDBBoostrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // If You Need animations
 import { ToastrModule } from 'ngx-toastr';
 
@@ -19,7 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 
-//import { MDBBootstrapModule } from 'angular-bootstrap-md';
+// Material
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -38,12 +39,14 @@ import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.compo
     BrowserAnimationsModule,
     FormsModule,
     ToastrModule.forRoot({
-      timeOut: 50000, // 5 seconds
+      timeOut: 5000, // 5 seconds
       closeButton: true,
       progressBar: true,
-      positionClass: 'toast-bottom-right',
+      //positionClass: 'toast-bottom-right',
     }),
     HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,10 +3,8 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 
 import { AlertMessageService } from '../alert-message.service';
-import { AlertMessage } from '../alert-message';
 
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 
 @Component({
@@ -47,18 +45,19 @@ export class LoginComponent {
       this.loginService.login(this.model)
       .subscribe(loggedIn => {
         if(loggedIn) {
-          //console.log('Submitting user %s', JSON.stringify(this.model));
-          this.alertMessageService.showSuccess(new AlertMessage('Sucesso!', `Usuário ${this.model.username} autenticado`));
-          this.router.navigate(['/home']);
+          this.alertMessageService
+          .exibeSucesso(`Usuário ${this.model.username} autenticado`)
+          .subscribe(_ => this.router.navigate(['/home']));
         } else {
-          this.alertMessageService.showWarning(new AlertMessage('Validação!', 'Login inválido'));
-          this.disableSubmitting();
+          this.alertMessageService
+          .exibeFalhaValidacao('Login inválido')
+          .subscribe(_ => this.disableSubmitting());
         }
       });
     } else {
-      //console.log('Ending submit!');
-      this.alertMessageService.showError(new AlertMessage('Validação!', `Usuário inválido. Tente novamente`));
-      this.disableSubmitting();
+      this.alertMessageService
+      .exibeErro(`Usuário inválido. Tente novamente`)
+      .subscribe(_ => this.disableSubmitting());
     }
   }
 

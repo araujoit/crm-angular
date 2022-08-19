@@ -1,4 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { NodeWithI18n } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, retry } from 'rxjs';
 import { AccessResponse } from './access_response';
@@ -48,7 +49,13 @@ export class LoginService {
       map(access_response => {
         console.log('access_response:', access_response);
         if (access_response) {
-          localStorage.setItem('token_jwt', access_response.access_token);
+          const now = new Date();
+          const ttl = access_response.expires_in;
+          const item = {
+            value: access_response.access_token,
+            expiresAt: now.getTime() + ttl
+          };
+          sessionStorage.setItem('token_jwt', JSON.stringify(item));
           return true;
         }
         return false;
@@ -59,7 +66,7 @@ export class LoginService {
   }
 
   public logout() : Observable<boolean> {
-    localStorage.removeItem('token_jwt');
+    sessionStorage.removeItem('token_jwt');
     return of(true);
   }
 }

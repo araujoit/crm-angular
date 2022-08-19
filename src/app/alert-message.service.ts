@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AlertMessage } from './alert-message';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +9,23 @@ export class AlertMessageService {
 
   constructor(private toastrService: ToastrService) { }
 
-  showSuccess(alert: AlertMessage) : void {
-    this.toastrService.success(alert.message, alert.title);
+  exibeSucesso(msg: string) : Observable<boolean> {
+    this.clear();
+    this.toastrService.success(msg, 'Sucesso!');
+    return of(true);
   }
 
-  showWarning(alert: AlertMessage) : void {
-    this.toastrService.warning(alert.message, alert.title);
+  exibeFalhaValidacao(msg: string) : Observable<boolean> {
+    this.toastrService.warning(msg, 'Validacao!');
+    return of(true);
   }
 
-  showError(alert: AlertMessage) : void {
-    this.toastrService.error(alert.message, alert.title);
+  exibeErro(msg: string) : Observable<boolean> {
+    this.toastrService.error(msg, 'Erro!');
+    return of(true);
+  }
+
+  clear() : void {
+    this.toastrService.clear();
   }
 }
