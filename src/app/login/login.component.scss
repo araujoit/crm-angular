@@ -88,3 +88,10 @@ body {
   color: $primary-color;
   text-decoration: none;
 }
+
+.loginMessage {
+  background-color: $secondary-color;
+  font-size: 12px;
+  opacity: 0.8;
+  font-color: $primary-color;
+}
