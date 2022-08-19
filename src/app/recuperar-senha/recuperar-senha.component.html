@@ -1,0 +1,22 @@
+<div id="recuperacao">
+  <form class="card">
+      <div class="card-header">
+          <h2>Recuperar Senha</h2>
+      </div>
+
+      <div class="card-content">
+          <div class="card-content-area">
+              <label for="email">E-mail utilizado no momento do cadastro</label>
+              <input type="email" id="email" name="email" autocomplete="off" [(ngModel)]="model.username">
+          </div>
+      </div>
+
+
+      <div class="card-footer">
+        <button class="close submit" (click)="recuperar()">Solicitar Recuperação</button>
+      </div>
+      <div class="card-footer buttons">
+        <a href="/login" class="voltar">Voltar</a>
+      </div>
+  </form>
+</div>
