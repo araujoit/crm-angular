@@ -39,7 +39,7 @@ import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.compo
     BrowserAnimationsModule,
     FormsModule,
     ToastrModule.forRoot({
-      timeOut: 150000, // 15 seconds
+      timeOut: 50000, // 5 seconds
       closeButton: true,
       progressBar: true,
     }),

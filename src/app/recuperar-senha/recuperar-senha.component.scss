@@ -1,3 +1,9 @@
+$primary-color: #fff;
+$secondary-color: #a13854;
+//$thirdyary-color:rgba(19, 19, 19, 0.3);
+$thirdyary-color:rgba(19, 19, 19, 0.3);
+$input-color: #e1e1e1;
+
 body {
   padding: 0;
   margin: 0;
@@ -10,35 +16,38 @@ body {
   justify-content: center;
   height: 100vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-color: #a13854;
+  background-color: $secondary-color;
 }
 
 .card {
-  background-color: rgba(19, 19, 19, 0.3);
+  box-sizing: content-box;
+  background-color: $thirdyary-color;
   padding: 40px 40px 20px 40px;
   border-radius: 2px;
   width: 280px;
+  border: none;
   //border: 1px dashed white;
 }
 
 .card-header {
   padding-bottom: 50px;
   opacity: 0.8;
-  color: #fff;
+  color: $primary-color;
+  font-size: 1.3rem;
 }
 
 .card-header::after {
   content: "";
   width: 70px;
   height: 1px;
-  background-color: #fff;
+  background-color: $primary-color;
   display: block;
   margin-top: -17px;
   margin-left: -5px;
 }
 
 .card-content label {
-  color: #fff;
+  color: $primary-color;
   font-size: 12px;
   opacity: 0.8;
 }
@@ -54,35 +63,42 @@ body {
   padding: 0 5px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #e1e1e1;
+  //border-bottom: 1px solid #fff;
+  background-color: $input-color;
   outline: none;
-  color: #fff;
+  color: $primary-color;
 }
 
 .card-footer {
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
+  border: none;
 }
 
 .card-footer .submit {
   width: 100%;
   height: 40px;
-  background-color: #a13854;
+  background-color: $secondary-color;
   border: none;
   color: #e1e1e1;
   margin: 10px 0;
   cursor: pointer;
 }
 
+.card-content-area input {
+  background-color: #e1e1e1;
+  color: black;
+}
+
 .card-footer a {
   text-align: center;
   font-size: 12px;
   opacity: 0.8;
-  color: #fff;
+  color: $primary-color;
   text-decoration: none;
 }
 
 .card-footer a.voltar {
   text-align: left;
-  border: 1px dashed white;
+  /*border: 1px dashed white;*/
 }

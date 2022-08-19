@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   isSubmitting: boolean = false;
-  model : User = new User(-1, '', '', '');
+  model : User = new User(-1, '', '', '', '');
 
   constructor(private router: Router, private toastrService: ToastrService) { }
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     if(this.validateUser()) {
       console.log('Submitting user %s', JSON.stringify(this.model));
-      this.toastrService.success('Sucesso!', `Usuário %s autenticado `);
+      this.toastrService.success('Sucesso!', `Usuário ${this.model.username} autenticado`);
       this.router.navigate(['/home']);
     } else {
       console.log('Ending submit!');
