@@ -1,20 +1,27 @@
 <app-menu></app-menu>
-<p>worker-list works!</p>
 
 <div class="workers">
   <div *ngFor="let worker of workers">
     <div class="worker">
       <div>
-        <label for="id">#</label>
-        <span name="id">{{worker.id}}</span>
+        <label for="id">
+          <strong>#</strong>
+        </label>
+        <span name="id">
+          <strong>{{worker.id}}</strong>
+        </span>
       </div>
       <div>
-        <label for="name">Nome: </label>
-        <span name="name">{{worker.name}}</span>
+        <label for="name">Nome:</label>
+        <span name="name">
+          <strong> {{worker.name}}</strong>
+        </span>
       </div>
       <div>
-        <label for="dailyIncome">Renda Diária: </label>
-        <span name="dailyIncome">{{worker.dailyIncome}}</span>
+        <label for="dailyIncome">Renda Diária:</label>
+        <span name="dailyIncome">
+          <strong> {{worker.dailyIncome}}</strong>
+        </span>
       </div>
     </div>
   </div>

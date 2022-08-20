@@ -1,7 +1,5 @@
-export class Worker {
-  constructor(
-    public id: number,
-    public name: string,
-    public dailyIncome: number
-  ) { }
+export interface Worker {
+  id: number;
+  name: string;
+  dailyIncome: number;
 }

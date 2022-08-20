@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { catchError, map, Observable, of, retry } from 'rxjs';
+import { catchError, flatMap, from, map, mergeMap, Observable, of, retry, switchMap, tap } from 'rxjs';
 
 import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
@@ -13,7 +13,7 @@ import { WorkerService } from '../worker.service';
 export class WorkerListComponent implements OnInit {
   workers: Worker[] = [];
 
-  constructor(private workerService : WorkerService) { }
+  constructor(private workerService : WorkerService) {}
 
   private handleError(error: HttpErrorResponse) : Observable<Array<Worker>> {
     if (error.error instanceof ErrorEvent) {
@@ -30,17 +30,20 @@ export class WorkerListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.workerService.requestWorkers()
+    this.workerService
+    .requestWorkers()
     .pipe(
-      map(worker_array => worker_array),
+      //mergeMap(worker => worker),
       catchError(this.handleError),
+      tap(() => console.log('HTTP request executed')),
+      map(res => res),
+      tap(res => console.log('mapped res', res)),
       retry(2)
     )
-    .subscribe(_ => {
-      //this.workers = workers;
-      //this.workers.push(new Worker(1, 'Nome', 123.02));
-      //this.workers.push(new Worker(2, 'Nome', 223.02));
+    .subscribe(workers => {
+      if(workers) {
+        workers.forEach(worker => this.workers.push(worker));
+      }
     });
   }
 
