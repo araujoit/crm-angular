@@ -24,6 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatInputModule } from '@angular/material/input'; 
+import { MatGridListModule } from '@angular/material/grid-list'; 
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressSpinnerModule,
     MatSliderModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

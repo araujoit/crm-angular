@@ -2,6 +2,21 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+html {
+  //background-color: gray;
+  background-image: url(/assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100vw 100vh;
+}
+
 body {
   margin: 0.5em;
+  background-color: white;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid black;
+  //height: 95vh;
+  min-height: 95vh;
 }

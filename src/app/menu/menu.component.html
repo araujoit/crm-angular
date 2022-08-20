@@ -1,10 +1,12 @@
 <nav>
   <a class="button" 
-    routerLink="/home">
+    [routerLink]="['/home']"
+    routerLinkActive="active">
     Home
   </a> |
   <a class="button" 
-    routerLink="/worker-list">
+    [routerLink]="['/worker-list']"
+    routerLinkActive="active">
     Listagem de Trabalhadores
   </a> |
   <a class="button" (click)="logout()">Logout</a>

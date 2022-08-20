@@ -1,8 +1,10 @@
 <app-menu></app-menu>
 
+
 <h3 mat-subheader>Trabalhadores</h3>
-<mat-list class="workers">
-  <mat-list-item *ngFor="let worker of (workers$ | async)">
+<mat-grid-list [cols]="3" rowHeight="2:1" class="workers">
+  <mat-grid-tile 
+    *ngFor="let worker of (workers$ | async)">
     <div class="worker">
       <h4 mat-line>
         <mat-icon mat-list-icon>dialpad</mat-icon>{{worker.id}}
@@ -16,12 +18,12 @@
       <p mat-line name="dailyincome">
         <label for="dailyIncome">Renda Diária:</label>
         <span name="dailyIncome">
-          <strong> R${{worker.dailyIncome.toFixed(2).replace('.', ',')}}</strong>
+          <strong> R${{worker.dailyIncome && worker.dailyIncome.toFixed(2).replace('.', ',')}}</strong>
         </span>
       </p>
     </div>
-  </mat-list-item>
-  <div class="loading-indicator" *ngIf="isSubmitting">
+  </mat-grid-tile>
+  <div class="loading-indicator" *ngIf="isLoading">
     <mat-spinner color="info"></mat-spinner>
   </div>  
-</mat-list>
+</mat-grid-list>

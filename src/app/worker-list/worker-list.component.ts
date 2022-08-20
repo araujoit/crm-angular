@@ -11,7 +11,7 @@ import { WorkerService } from '../worker.service';
   styleUrls: ['./worker-list.component.scss']
 })
 export class WorkerListComponent implements OnInit {
-  isSubmitting : boolean = true;
+  isLoading : boolean = true;
   workers$!: Observable<Worker[]>;
 
   constructor(private workerService : WorkerService) {}
@@ -30,18 +30,31 @@ export class WorkerListComponent implements OnInit {
     return of([]);
   }
 
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
   ngOnInit(): void {
-    this.workers$ = this.workerService
-    .requestWorkers()
-    .pipe(
-      //mergeMap(worker => worker),
-      catchError(this.handleError),
-      //tap(() => console.log('HTTP request executed')),
-      map(res => res),
-      //tap(res => console.log('mapped res', res)),
-      retry(2),
-      tap(() => this.isSubmitting = false),
-    );
+    (async () => { 
+      // Do something before delay
+      //console.log('before delay')
+
+      await this.delay(1000);
+
+      // Do something after
+      //console.log('after delay')
+      this.workers$ = this.workerService
+      .requestWorkers()
+      .pipe(
+        //mergeMap(worker => worker),
+        catchError(this.handleError),
+        //tap(() => console.log('HTTP request executed')),
+        map(res => res),
+        //tap(res => console.log('mapped res', res)),
+        retry(2),
+        tap(() => this.isLoading = false),
+      );
+    })();
   }
 
 }
