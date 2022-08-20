@@ -22,6 +22,8 @@ import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.compo
 // Material
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatInputModule } from '@angular/material/input'; 
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { MatSliderModule } from '@angular/material/slider';
     }),
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

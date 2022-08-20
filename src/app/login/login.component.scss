@@ -18,10 +18,24 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background-color: $secondary-color;
   background-image: url(/assets/images/background.jpg);
+  color: $primary-color;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: 100%;
+}
+
+#login ::placeholder { /* Chrome, Firefox, Safari 10.1+ */
+  color: white;
+  opacity: 0.5;
+}
+
+#login :-ms-input-placeholder { /* Internet Explorer 10-11*/
+  color: white;
+}
+
+#login ::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }
 
 .card {

@@ -1,7 +1,15 @@
 .workers {
-  border: 1px solid black;
+  //border: 1px solid black;
+  display: flex;
 }
 
 .worker {
   border: 1px solid black;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 00.5em;
+}
+
+.mat-line {
+  //border: 1px dashed black;
 }

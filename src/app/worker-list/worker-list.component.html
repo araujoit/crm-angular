@@ -1,28 +1,27 @@
 <app-menu></app-menu>
 
-<div class="workers">
-  <div *ngFor="let worker of workers">
+<h3 mat-subheader>Trabalhadores</h3>
+<mat-list class="workers">
+  <mat-list-item *ngFor="let worker of (workers$ | async)">
     <div class="worker">
-      <div>
-        <label for="id">
-          <strong>#</strong>
-        </label>
-        <span name="id">
-          <strong>{{worker.id}}</strong>
-        </span>
-      </div>
-      <div>
+      <h4 mat-line>
+        <mat-icon mat-list-icon>dialpad</mat-icon>{{worker.id}}
+      </h4>
+      <p mat-line name="nome">
         <label for="name">Nome:</label>
         <span name="name">
           <strong> {{worker.name}}</strong>
         </span>
-      </div>
-      <div>
+      </p>
+      <p mat-line name="dailyincome">
         <label for="dailyIncome">Renda Diária:</label>
         <span name="dailyIncome">
-          <strong> {{worker.dailyIncome}}</strong>
+          <strong> R${{worker.dailyIncome.toFixed(2).replace('.', ',')}}</strong>
         </span>
-      </div>
+      </p>
     </div>
-  </div>
-</div>
+  </mat-list-item>
+  <div class="loading-indicator" *ngIf="isSubmitting">
+    <mat-spinner color="info"></mat-spinner>
+  </div>  
+</mat-list>

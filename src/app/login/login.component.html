@@ -6,13 +6,13 @@
 
     <div class="card-content">
       <div class="card-content-area">
-        <label for="usuario">Usuário</label>
-        <input type="text" id="usuario" autocomplete="off" [(ngModel)]="model.username" name="name">
+        <mat-label for="usuario">Usuário</mat-label>
+        <input type="email" matInput placeholder="user@server.com"id="usuario" autocomplete="off" [(ngModel)]="model.username" name="name">
       </div>
 
       <div class="card-content-area">
-        <label for="password">Senha</label>
-        <input type="password" id="password" autocomplete="off" [(ngModel)]="model.password" name="password">
+        <mat-label for="password">Senha</mat-label>
+        <input type="password" matInput placeholder="******" id="password" autocomplete="off" [(ngModel)]="model.password" name="password">
       </div>
     </div>
 

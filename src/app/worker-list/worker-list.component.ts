@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { catchError, flatMap, from, map, mergeMap, Observable, of, retry, switchMap, tap } from 'rxjs';
+import { catchError, map, Observable, of, retry, tap } from 'rxjs';
 
 import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
@@ -11,7 +11,8 @@ import { WorkerService } from '../worker.service';
   styleUrls: ['./worker-list.component.scss']
 })
 export class WorkerListComponent implements OnInit {
-  workers: Worker[] = [];
+  isSubmitting : boolean = true;
+  workers$!: Observable<Worker[]>;
 
   constructor(private workerService : WorkerService) {}
 
@@ -30,21 +31,17 @@ export class WorkerListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.workerService
+    this.workers$ = this.workerService
     .requestWorkers()
     .pipe(
       //mergeMap(worker => worker),
       catchError(this.handleError),
-      tap(() => console.log('HTTP request executed')),
+      //tap(() => console.log('HTTP request executed')),
       map(res => res),
-      tap(res => console.log('mapped res', res)),
-      retry(2)
-    )
-    .subscribe(workers => {
-      if(workers) {
-        workers.forEach(worker => this.workers.push(worker));
-      }
-    });
+      //tap(res => console.log('mapped res', res)),
+      retry(2),
+      tap(() => this.isSubmitting = false),
+    );
   }
 
 }
