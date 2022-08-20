@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<p>worker-list works!</p>
+
+<div class="workers">
+  <div *ngFor="let worker of workers">
+    <div class="worker">
+      <div>
+        <label for="id">#</label>
+        <span name="id">{{worker.id}}</span>
+      </div>
+      <div>
+        <label for="name">Nome: </label>
+        <span name="name">{{worker.name}}</span>
+      </div>
+      <div>
+        <label for="dailyIncome">Renda Diária: </label>
+        <span name="dailyIncome">{{worker.dailyIncome}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
+import { WorkerListComponent } from './worker-list/worker-list.component';
 import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { HeroesListComponent } from './heroes-list/heroes-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -26,12 +27,14 @@ import { MatSliderModule } from '@angular/material/slider';
   declarations: [
     AppComponent,
     HomeComponent,
+    WorkerListComponent,
     CrisisListComponent,
     HeroesListComponent,
     PageNotFoundComponent,
     LoginComponent,
     MenuComponent,
-    RecuperarSenhaComponent
+    RecuperarSenhaComponent,
+    WorkerListComponent
   ],
   imports: [
     BrowserModule,

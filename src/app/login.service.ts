@@ -3,6 +3,7 @@ import { NodeWithI18n } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, retry } from 'rxjs';
 import { AccessResponse } from './access_response';
+import { SessionService } from './session.service';
 import { User } from './user';
 
 const httpOptions = {
@@ -22,7 +23,7 @@ export class LoginService {
 
   access_response : AccessResponse = new AccessResponse('', '', -1, '', '');
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private sessionService : SessionService) { }
 
   private handleError(error: HttpErrorResponse) : Observable<boolean> {
     if (error.error instanceof ErrorEvent) {
@@ -47,15 +48,9 @@ export class LoginService {
     )
     .pipe(
       map(access_response => {
-        console.log('access_response:', access_response);
+        console.log('access_response:', access_response);        
         if (access_response) {
-          const now = new Date();
-          const ttl = access_response.expires_in;
-          const item = {
-            value: access_response.access_token,
-            expiresAt: now.getTime() + ttl
-          };
-          sessionStorage.setItem('token_jwt', JSON.stringify(item));
+          sessionStorage.setItem('token_jwt', JSON.stringify(access_response));
           return true;
         }
         return false;
